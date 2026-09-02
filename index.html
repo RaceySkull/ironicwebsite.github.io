@@ -9,6 +9,23 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
+<!--
+  HOME / OVERVIEW PAGE
+  ====================
+  Layout top to bottom:
+    1. Top bar (nav)              — shared across every page
+    2. Hero banner                — team name + spinning gears
+    3. Overview hero              — lead paragraph, stat pills, CTA button, countdown card
+    4. RGB strip                  — decorative line fixed to page bottom
+
+  HOW TO EDIT:
+    - Lead paragraph / bio: edit the <p class="lead"> text below.
+    - Stat numbers (Seasons / FIRST Events / Rookie Year / Team #):
+      edit the .hero-stat-num spans.
+    - Countdown target date: set NEXT_COMP_DATE in script.js.
+    - Styles for everything on this page live in style.css, sections
+      6-10 ("PAGE HEADER" through "COUNTDOWN CARD").
+-->
 <body data-page="index.html">
 
 
@@ -33,13 +50,13 @@
 
 <div class="page active" id="page-overview">
 
-  <!-- HERO BANNER — based on sketch: left-aligned title, info top-right, gears bleeding off bottom corners -->
+  <!-- HERO BANNER — left-aligned title, EST/school meta bottom-right,
+       gears bleeding off the bottom corners -->
   <div class="hero-banner-wrap">
 
-    <!-- ── DESKTOP LAYOUT ── -->
     <div class="hero-desktop">
 
-      <!-- top row: title block only -->
+      <!-- title block -->
       <div class="hero-top-row">
         <div class="hero-title-block">
           <div class="hero-teamnum">14226</div>
@@ -54,7 +71,7 @@
         <div class="hero-meta-line">for the Arts</div>
       </div>
 
-      <!-- gears bleeding off bottom corners, decorative background -->
+      <!-- decorative spinning gears, bleed off the corners -->
       <div class="hero-gear-desktop-left">
         <img src="gear.png" alt="" class="gear-spin">
       </div>
@@ -66,13 +83,10 @@
       <div class="hero-cutoff-line"></div>
     </div>
 
-
-
   </div>
 
-
+  <!-- OVERVIEW: lead paragraph + stat pills + CTA (left) / countdown card (right) -->
   <div class="overview-hero" style="grid-template-columns: 1fr; border-right: none; border-bottom: none; background: transparent; position: relative; z-index: 2; align-items: start; min-height: 0; margin-top: -100px;">
-
 
     <div class="hero-text" style="border-right: none; padding: 0px 340px 40px 340px; background: transparent; display: flex; flex-direction: row; align-items: flex-end; justify-content: flex-start; gap: 60px; flex-wrap: wrap;">
 

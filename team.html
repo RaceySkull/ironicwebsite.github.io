@@ -9,6 +9,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
+<!--
+  TEAM PAGE
+  =========
+  Layout top to bottom:
+    1. Top bar (nav)              — shared across every page
+    2. Page header                — "Our Team" title + corner gears
+    3. Team content                — one .team-grid per group:
+                                      Leadership, Build, Code, Media, Mentors
+
+  HOW TO ADD OR REMOVE A MEMBER:
+    Copy one <div class="team-card pink"> (or "blue") block inside the
+    group's .team-grid, then edit the photo, name, role, and grade.
+    "pink" / "blue" just alternates the accent color — doesn't need to
+    mean anything.
+
+  Styles for the cards, role-tag pills, and section titles all live in
+  style.css, section 12 ("TEAM PAGE").
+-->
 <body data-page="team.html">
 
 
@@ -47,43 +65,14 @@
     </div>
   </div>
 
-  <style>
-    .role-tag {
-      display: inline-block;
-      font-family: 'Space Mono', monospace;
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 3px 9px;
-      border-radius: 20px;
-      margin-top: 6px;
-    }
-    .role-tag.build   { background: var(--teal-glow); color: var(--teal); border: 1px solid var(--teal-border); }
-    .role-tag.code    { background: rgba(255,45,120,0.12); color: var(--pink); border: 1px solid rgba(255,45,120,0.3); }
-    .role-tag.media   { background: rgba(255,255,255,0.06); color: var(--text-dim); border: 1px solid var(--border); }
-    .role-tag.mentor  { background: rgba(255,215,0,0.1); color: #FFD966; border: 1px solid rgba(255,215,0,0.3); }
-    .role-tag.lead    { background: var(--teal-glow); color: var(--teal); border: 1px solid var(--teal-border); }
-
-    /* center the section divider titles (Leadership / Build / Code / etc.) on this page only */
-    .team-content .events-section-title {
-      justify-content: center;
-    }
-    .team-content .events-section-title::before {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-  </style>
-
   <div class="team-content">
 
+    <!-- LEADERSHIP -->
     <div class="events-section-title">Leadership</div>
     <div class="team-grid" style="margin-bottom: 44px;">
       <div class="team-card pink">
         <div class="team-card-img">
-          <img src="portrait-placeholder.png" alt="">
+          <img src="portraitplaceholder.png" alt="">
         </div>
         <div class="team-card-body">
           <div class="team-card-name">Chase M.</div>
@@ -94,7 +83,7 @@
       </div>
       <div class="team-card blue">
         <div class="team-card-img">
-          <img src="portrait-placeholder.png" alt="">
+          <img src="portraitplaceholder.png" alt="">
         </div>
         <div class="team-card-body">
           <div class="team-card-name">Imani C.</div>
@@ -105,13 +94,14 @@
       </div>
     </div>
 
+    <!-- BUILD + CODE side by side -->
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 32px;">
       <div>
         <div class="events-section-title">Build</div>
         <div class="team-grid">
           <div class="team-card pink">
             <div class="team-card-img">
-              <img src="portrait-placeholder.png" alt="">
+              <img src="portraitplaceholder.png" alt="">
             </div>
             <div class="team-card-body">
               <div class="team-card-name">Lucas B.</div>
@@ -122,7 +112,7 @@
           </div>
           <div class="team-card blue">
             <div class="team-card-img">
-              <img src="portrait-placeholder.png" alt="">
+              <img src="portraitplaceholder.png" alt="">
             </div>
             <div class="team-card-body">
               <div class="team-card-name">Logan M.</div>
@@ -133,7 +123,7 @@
           </div>
           <div class="team-card pink">
             <div class="team-card-img">
-              <img src="portrait-placeholder.png" alt="">
+              <img src="portraitplaceholder.png" alt="">
             </div>
             <div class="team-card-body">
               <div class="team-card-name">John Doe</div>
@@ -150,7 +140,7 @@
         <div class="team-grid">
           <div class="team-card blue">
             <div class="team-card-img">
-              <img src="portrait-placeholder.png" alt="">
+              <img src="portraitplaceholder.png" alt="">
             </div>
             <div class="team-card-body">
               <div class="team-card-name">Josh V.</div>
@@ -161,7 +151,7 @@
           </div>
           <div class="team-card pink">
             <div class="team-card-img">
-              <img src="portrait-placeholder.png" alt="">
+              <img src="portraitplaceholder.png" alt="">
             </div>
             <div class="team-card-body">
               <div class="team-card-name">Amberlynn P.</div>
@@ -172,7 +162,7 @@
           </div>
           <div class="team-card blue">
             <div class="team-card-img">
-              <img src="portrait-placeholder.png" alt="">
+              <img src="portraitplaceholder.png" alt="">
             </div>
             <div class="team-card-body">
               <div class="team-card-name">John Doe</div>
@@ -185,11 +175,12 @@
       </div>
     </div>
 
+    <!-- MEDIA -->
     <div class="events-section-title">Media</div>
     <div class="team-grid" style="margin-bottom: 44px;">
       <div class="team-card pink">
         <div class="team-card-img">
-          <img src="portrait-placeholder.png" alt="">
+          <img src="portraitplaceholder.png" alt="">
         </div>
         <div class="team-card-body">
           <div class="team-card-name">Carly D.</div>
@@ -200,7 +191,7 @@
       </div>
       <div class="team-card blue">
         <div class="team-card-img">
-          <img src="portrait-placeholder.png" alt="">
+          <img src="portraitplaceholder.png" alt="">
         </div>
         <div class="team-card-body">
           <div class="team-card-name">Sophie M.</div>
@@ -211,7 +202,7 @@
       </div>
       <div class="team-card pink">
         <div class="team-card-img">
-          <img src="portrait-placeholder.png" alt="">
+          <img src="portraitplaceholder.png" alt="">
         </div>
         <div class="team-card-body">
           <div class="team-card-name">John Doe</div>
@@ -222,11 +213,12 @@
       </div>
     </div>
 
+    <!-- MENTORS -->
     <div class="events-section-title">Mentors</div>
     <div class="team-grid" style="margin-bottom: 0px;">
       <div class="team-card blue">
         <div class="team-card-img">
-          <img src="portrait-placeholder.png" alt="">
+          <img src="portraitplaceholder.png" alt="">
         </div>
         <div class="team-card-body">
           <div class="team-card-name">Hannah M.</div>
@@ -236,7 +228,7 @@
       </div>
       <div class="team-card pink">
         <div class="team-card-img">
-          <img src="portrait-placeholder.png" alt="">
+          <img src="portraitplaceholder.png" alt="">
         </div>
         <div class="team-card-body">
           <div class="team-card-name">Richard F.</div>
@@ -246,7 +238,7 @@
       </div>
       <div class="team-card blue">
         <div class="team-card-img">
-          <img src="portrait-placeholder.png" alt="">
+          <img src="portraitplaceholder.png" alt="">
         </div>
         <div class="team-card-body">
           <div class="team-card-name">John Doe</div>
@@ -256,7 +248,7 @@
       </div>
       <div class="team-card pink">
         <div class="team-card-img">
-          <img src="portrait-placeholder.png" alt="">
+          <img src="portraitplaceholder.png" alt="">
         </div>
         <div class="team-card-body">
           <div class="team-card-name">John Doe</div>
