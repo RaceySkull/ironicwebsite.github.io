@@ -246,6 +246,110 @@
     margin-bottom: 24px; display: flex; align-items: center; gap: 16px;
   }
   .events-section-title::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+
+  .events-content { padding: 48px 56px 72px; max-width: 980px; margin: 0 auto; }
+  .events-intro { margin-bottom: 40px; }
+
+  .events-note {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--teal);
+    border-radius: 8px;
+    padding: 16px 20px;
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 48px;
+  }
+  .events-note strong { color: var(--teal); }
+
+  .event-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+
+  .event-card {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 28px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .event-card:hover { border-color: var(--teal-border); transform: translateX(4px); }
+  .event-card.featured {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 1px var(--teal), 0 0 24px var(--teal-glow);
+  }
+
+  .event-date-block {
+    flex-shrink: 0;
+    width: 84px;
+    text-align: center;
+    border-right: 1px solid var(--border);
+    padding-right: 22px;
+  }
+  .event-month {
+    font-family: "Space Mono", monospace;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--pink);
+    margin-bottom: 4px;
+  }
+  .event-day {
+    font-family: "Inter", sans-serif;
+    font-size: 30px; font-weight: 900; color: var(--text);
+    line-height: 1.05; letter-spacing: -0.02em;
+  }
+  .event-day.multi { font-size: 19px; }
+  .event-year {
+    font-family: "Space Mono", monospace;
+    font-size: 10px; color: var(--text-muted); margin-top: 3px;
+  }
+
+  .event-body { flex: 1; min-width: 0; }
+  .event-name-row {
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    margin-bottom: 6px;
+  }
+  .event-name {
+    font-size: 18px; font-weight: 700; color: var(--text); letter-spacing: -0.01em;
+  }
+  .event-type-tag {
+    display: inline-block;
+    font-family: "Space Mono", monospace;
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 3px 9px; border-radius: 20px;
+    flex-shrink: 0;
+  }
+  .event-type-tag.kickoff      { background: var(--teal-glow); color: var(--teal); border: 1px solid var(--teal-border); }
+  .event-type-tag.scrimmage    { background: rgba(255,255,255,0.06); color: var(--text-dim); border: 1px solid var(--border); }
+  .event-type-tag.meet         { background: rgba(255,45,120,0.12); color: var(--pink); border: 1px solid rgba(255,45,120,0.3); }
+  .event-type-tag.judging      { background: rgba(255,215,0,0.1); color: #FFD966; border: 1px solid rgba(255,215,0,0.3); }
+  .event-type-tag.championship { background: var(--teal-glow); color: var(--teal); border: 1px solid var(--teal-border); }
+
+  .event-location {
+    font-family: "Space Mono", monospace;
+    font-size: 12px; color: var(--text-dim); letter-spacing: 0.03em;
+  }
+  .event-location.tbd { color: var(--text-muted); font-style: italic; }
+
+  .event-badges {
+    flex-shrink: 0;
+    display: flex; flex-direction: column; align-items: flex-end; gap: 6px;
+  }
+  .event-badge {
+    font-family: "Space Mono", monospace;
+    font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 20px; white-space: nowrap;
+  }
+  .event-badge.confirmed { background: var(--teal-glow); color: var(--teal); border: 1px solid var(--teal-border); }
+  .event-badge.tbd       { background: rgba(255,45,120,0.1); color: var(--pink); border: 1px solid rgba(255,45,120,0.25); }
+  .event-badge.virtual   { background: rgba(255,255,255,0.06); color: var(--text-dim); border: 1px solid var(--border); }
+
   
   
   
