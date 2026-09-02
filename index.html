@@ -124,28 +124,30 @@
       <!-- right: countdown to next competition — flex item, bottom auto-aligns with stats bar via align-items:flex-end -->
       <div class="countdown-card" id="countdownCard" style="flex: 0 0 380px; align-self: flex-start; margin-top: 40px;">
         <div class="countdown-label">
-          Days to Next Competition
+          Countdown to Next Competition
         </div>
-        <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px;">
-          <div style="
-            font-family: 'Inter', sans-serif;
-            font-size: 48px;
-            font-weight: 900;
-            color: var(--pink);
-            letter-spacing: 0.05em;
-            line-height: 1;
-            border: 1px solid rgba(255,45,120,0.4);
-            border-radius: 10px;
-            padding: 12px 24px;
-          ">TBD</div>
-          <div style="
-            font-family: 'Space Mono', monospace;
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--teal);
-            letter-spacing: 0.1em;
-          ">X/X/XX</div>
+        <div class="countdown-digits">
+          <div class="countdown-unit">
+            <div class="countdown-num" id="cd-days">--</div>
+            <div class="countdown-sublabel">Days</div>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-unit">
+            <div class="countdown-num" id="cd-hours">--</div>
+            <div class="countdown-sublabel">Hrs</div>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-unit">
+            <div class="countdown-num" id="cd-mins">--</div>
+            <div class="countdown-sublabel">Min</div>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-unit">
+            <div class="countdown-num" id="cd-secs">--</div>
+            <div class="countdown-sublabel">Sec</div>
+          </div>
         </div>
+        <div class="countdown-event">Kick Off Event · 9/12/26</div>
       </div>
 
     </div>
