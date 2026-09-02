@@ -174,8 +174,8 @@
     position: relative; overflow: hidden;
     border-bottom: 1px solid var(--border);
   }
-
-
+  
+  
   .page-title {
     font-family: "Inter", sans-serif;
     font-size: clamp(42px, 6vw, 80px);
@@ -205,160 +205,62 @@
     font-size: 22px; line-height: 1.8; color: var(--text-dim);
     margin-bottom: 0; font-weight: 400; max-width: 680px;
   }
-
-
-
+  
+  
+  
 
   /* ── STATS — big, airy, each number feels deliberate ── */
-
-
-
-
-
+  
+  
+  
+  
+  
   .stat-label {
     font-size: 12px; font-weight: 500; color: var(--text-muted);
     letter-spacing: 0; text-transform: none;
   }
 
-
+  
 
   /* ── INFO SECTION — not a grid. each one is its own strip with a big number ── */
-
-
-
-
-
+  
+  
+  
+  
+  
 
   /* counter column */
+  
+  
 
+  
+  
 
-
-
-
-
-
+  
 
   /* ── EVENTS ── */
-
+  
   .events-section-title {
     font-family: "Inter", sans-serif; font-size: 10px; font-weight: 700;
     letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted);
     margin-bottom: 24px; display: flex; align-items: center; gap: 16px;
   }
   .events-section-title::after { content: ""; flex: 1; height: 1px; background: var(--border); }
-
-  .events-content { padding: 48px 56px 72px; max-width: 980px; margin: 0 auto; }
-  .events-intro { margin-bottom: 40px; }
-
-  .events-note {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--teal);
-    border-radius: 8px;
-    padding: 16px 20px;
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.6;
-    margin-bottom: 48px;
-  }
-  .events-note strong { color: var(--teal); }
-
-  .event-timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin-bottom: 8px;
-  }
-
-  .event-card {
-    display: flex;
-    align-items: center;
-    gap: 26px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 22px 28px;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-  .event-card:hover { border-color: var(--teal-border); transform: translateX(4px); }
-  .event-card.featured {
-    border-color: var(--teal);
-    box-shadow: 0 0 0 1px var(--teal), 0 0 24px var(--teal-glow);
-  }
-
-  .event-date-block {
-    flex-shrink: 0;
-    width: 84px;
-    text-align: center;
-    border-right: 1px solid var(--border);
-    padding-right: 22px;
-  }
-  .event-month {
-    font-family: "Space Mono", monospace;
-    font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
-    text-transform: uppercase; color: var(--pink);
-    margin-bottom: 4px;
-  }
-  .event-day {
-    font-family: "Inter", sans-serif;
-    font-size: 30px; font-weight: 900; color: var(--text);
-    line-height: 1.05; letter-spacing: -0.02em;
-  }
-  .event-day.multi { font-size: 19px; }
-  .event-year {
-    font-family: "Space Mono", monospace;
-    font-size: 10px; color: var(--text-muted); margin-top: 3px;
-  }
-
-  .event-body { flex: 1; min-width: 0; }
-  .event-name-row {
-    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
-    margin-bottom: 6px;
-  }
-  .event-name {
-    font-size: 18px; font-weight: 700; color: var(--text); letter-spacing: -0.01em;
-  }
-  .event-type-tag {
-    display: inline-block;
-    font-family: "Space Mono", monospace;
-    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
-    text-transform: uppercase; padding: 3px 9px; border-radius: 20px;
-    flex-shrink: 0;
-  }
-  .event-type-tag.kickoff      { background: var(--teal-glow); color: var(--teal); border: 1px solid var(--teal-border); }
-  .event-type-tag.scrimmage    { background: rgba(255,255,255,0.06); color: var(--text-dim); border: 1px solid var(--border); }
-  .event-type-tag.meet         { background: rgba(255,45,120,0.12); color: var(--pink); border: 1px solid rgba(255,45,120,0.3); }
-  .event-type-tag.judging      { background: rgba(255,215,0,0.1); color: #FFD966; border: 1px solid rgba(255,215,0,0.3); }
-  .event-type-tag.championship { background: var(--teal-glow); color: var(--teal); border: 1px solid var(--teal-border); }
-
-  .event-location {
-    font-family: "Space Mono", monospace;
-    font-size: 12px; color: var(--text-dim); letter-spacing: 0.03em;
-  }
-  .event-location.tbd { color: var(--text-muted); font-style: italic; }
-
-  .event-badges {
-    flex-shrink: 0;
-    display: flex; flex-direction: column; align-items: flex-end; gap: 6px;
-  }
-  .event-badge {
-    font-family: "Space Mono", monospace;
-    font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 4px 10px; border-radius: 20px; white-space: nowrap;
-  }
-  .event-badge.confirmed { background: var(--teal-glow); color: var(--teal); border: 1px solid var(--teal-border); }
-  .event-badge.tbd       { background: rgba(255,45,120,0.1); color: var(--pink); border: 1px solid rgba(255,45,120,0.25); }
-  .event-badge.virtual   { background: rgba(255,255,255,0.06); color: var(--text-dim); border: 1px solid var(--border); }
-
-  @media (max-width: 700px) {
-    .event-card { flex-wrap: wrap; padding: 20px; gap: 16px; }
-    .event-date-block { border-right: none; border-bottom: 1px solid var(--border); width: 100%; text-align: left; padding-right: 0; padding-bottom: 14px; display: flex; align-items: baseline; gap: 10px; }
-    .event-day { font-size: 22px; }
-    .event-badges { flex-direction: row; align-items: center; width: 100%; }
-    .events-content { padding: 32px 24px 56px; }
-  }
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
   /* ── TEAM — big photo, name underneath, very clean ── */
   .team-content { padding: 48px 56px 72px; }
@@ -375,7 +277,6 @@
     width: 210px; flex-shrink: 0;
   }
   .team-card:hover { transform: translateY(-6px); }
-  .team-card:nth-child(even):hover { transform: translateY(-6px); box-shadow: none; border-color: transparent; }
   .team-card-img { position: relative; aspect-ratio: 3/4; overflow: hidden; border-radius: 4px; margin-bottom: 14px; }
   .team-card-img img {
     width: 100%; height: 100%; object-fit: cover;
@@ -392,188 +293,88 @@
     transition: transform 0.3s ease;
   }
   .team-card:hover .team-card-img::before { transform: scaleX(1); }
-  .team-card:nth-child(even) .team-card-img::before { background: var(--pink); }
-  .team-card-body { padding: 0; }
+  .team-card.pink .team-card-img::before { background: var(--pink); }
+  .team-card.blue .team-card-img::before { background: var(--teal); }
+  .team-card-body { padding: 0; text-align: center; }
   .team-card-name { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px; letter-spacing: -0.01em; }
   .team-card-role { font-size: 11px; font-weight: 500; color: var(--teal); text-transform: uppercase; letter-spacing: 0.06em; }
-  .team-card:nth-child(even) .team-card-role { color: var(--pink); }
+  .team-card.pink .team-card-role { color: var(--pink); }
+  .team-card.blue .team-card-role { color: var(--teal); }
   .team-card-grade { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
-
+  
 
   /* ── ALUMNI — no cards. big quotes ── */
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
   /* ── AWARDS ── */
-
+  
   /* two featured awards side by side, no box feeling */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
   /* ── SPONSORS ── */
-  .sponsor-content { padding: 48px 56px 72px; max-width: 980px; }
-  .sponsor-intro { margin-bottom: 40px; }
-
-  .tier-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-bottom: 8px;
-  }
-  .tier-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 22px 18px;
-    text-align: center;
-  }
-  .tier-card.tier-featured {
-    border-color: var(--teal);
-    box-shadow: 0 0 0 1px var(--teal), 0 0 24px var(--teal-glow);
-  }
-  .tier-name {
-    font-family: "Space Mono", monospace;
-    font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--pink); margin-bottom: 10px;
-  }
-  .tier-card.tier-featured .tier-name { color: var(--teal); }
-  .tier-amount {
-    font-family: "Inter", sans-serif;
-    font-size: 26px; font-weight: 800; color: var(--text); margin-bottom: 10px; letter-spacing: -0.02em;
-  }
-  .tier-perks { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
-
-  .sponsor-form-wrap {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 40px;
-    max-width: 640px;
-  }
-
-  .form-row { margin-bottom: 20px; }
-  .form-row-split { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-
-  .sponsor-form-wrap label {
-    display: block;
-    font-family: "Space Mono", monospace;
-    font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--text-dim); margin-bottom: 8px;
-  }
-
-  .sponsor-form-wrap input[type="text"],
-  .sponsor-form-wrap input[type="email"],
-  .sponsor-form-wrap input[type="tel"],
-  .sponsor-form-wrap select,
-  .sponsor-form-wrap textarea {
-    width: 100%;
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 11px 14px;
-    color: var(--text);
-    font-family: "Inter", sans-serif;
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.15s;
-  }
-  .sponsor-form-wrap textarea { resize: vertical; }
-  .sponsor-form-wrap input:focus,
-  .sponsor-form-wrap select:focus,
-  .sponsor-form-wrap textarea:focus { border-color: var(--teal); }
-
-  .sponsor-submit-btn {
-    margin-top: 4px;
-    padding: 12px 27px;
-    background: var(--teal);
-    color: var(--bg);
-    border: 2px solid var(--teal);
-    border-radius: 8px;
-    font-family: "Inter", sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.01em;
-    cursor: pointer;
-    transition: background 0.15s, color 0.15s, border-color 0.15s;
-  }
-  .sponsor-submit-btn:hover:not(:disabled) {
-    background: transparent; color: var(--pink); border-color: var(--pink);
-  }
-  .sponsor-submit-btn:disabled { opacity: 0.6; cursor: default; }
-
-  .form-status { margin-top: 14px; font-size: 13px; }
-  .form-status.error { color: var(--pink); }
-
-  .form-success {
-    background: var(--surface);
-    border: 1px solid var(--teal-border);
-    border-radius: 14px;
-    padding: 40px;
-    max-width: 640px;
-  }
-  .form-success-title {
-    font-family: "Inter", sans-serif;
-    font-size: 22px; font-weight: 800; color: var(--teal); margin-bottom: 10px;
-  }
-  .form-success p { color: var(--text-dim); font-size: 14px; line-height: 1.6; }
-
-  @media (max-width: 900px) {
-    .tier-grid { grid-template-columns: repeat(2, 1fr); }
-    .form-row-split { grid-template-columns: 1fr; gap: 0; }
-    .sponsor-form-wrap { padding: 28px; }
-    .sponsor-content { padding: 32px 24px 56px; }
-  }
+  
+  
+  
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
   /* ── CONTACT ── */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
   /* ── SCROLLBAR ── */
   ::-webkit-scrollbar { width: 4px; }
@@ -669,7 +470,7 @@
     50% { opacity: 0.4; }
   }
 
-
+  
 
   /* ── DESKTOP: sidebar hidden by default, slides in via hamburger ── */
   @media (min-width: 769px) {
@@ -684,7 +485,7 @@
     nav.open {
       transform: translateX(0);
     }
-
+    
     .nav-overlay {
       display: block !important;
       opacity: 0;
@@ -703,9 +504,9 @@
       padding-right: 32px !important;
     }
     .overview-hero { grid-template-columns: 1fr !important; }
-
-
-
+    
+    
+    
     .page-bg-text { display: none !important; }
     .hero-banner-wrap { padding-left: 32px !important; padding-right: 32px !important; }
     .hero-banner-wrap .hero-ghost { display: none !important; }
@@ -779,7 +580,7 @@
   }
   .hero-meta-line:first-child { color: var(--pink); font-weight: 700; }
 
-
+  
 
   .hero-stats {
     display: flex;
@@ -862,11 +663,11 @@
     gap: 10px;
     margin-bottom: 32px;
   }
-
-
-
-
-
+  
+  
+  
+  
+  
 
   @media (max-width: 900px) {
     .countdown-card { flex: 1 1 100% !important; }
