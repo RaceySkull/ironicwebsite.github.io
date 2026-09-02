@@ -12,42 +12,22 @@
 <body data-page="index.html">
 
 
-<!-- HAMBURGER BUTTON -->
-<button class="hamburger-btn" id="hamburgerBtn" onclick="toggleNav()" aria-label="Toggle navigation">
-  <span class="bar"></span>
-  <span class="bar"></span>
-  <span class="bar"></span>
-</button>
-
-<!-- NAV OVERLAY -->
-<div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
-
-
-<!-- SIDEBAR -->
-<nav id="sideNav">
-  <div class="nav-brand">
-    <div class="nav-number">FTC #14226</div>
-    <div class="nav-logo"><span>IRON</span>IC</div>
-    <div class="nav-sub">First Tech Challenge</div>
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="topbar-brand">
+    <div class="topbar-logo"><span>IRON</span>IC</div>
+    <div class="topbar-number">FTC #14226</div>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="index.html">
-      <span class="nav-icon">◈</span> Overview
-    </a>
-    <a class="nav-link" href="team.html">
-      <span class="nav-icon">◉</span> Team
-    </a>
-    <a class="nav-link" href="events.html">
-      <span class="nav-icon">▤</span> Events
-    </a>
+  <nav class="topbar-links">
+    <a class="nav-link" href="index.html">Overview</a>
+    <a class="nav-link" href="team.html">Team</a>
+    <a class="nav-link" href="events.html">Events</a>
+  </nav>
+  <div class="topbar-meta">
+    Season 2026–27<br>
+    BIOBUZZ
   </div>
-  <div class="nav-footer">
-    <div class="nav-footer-text">
-      Season 2026–27<br>
-      BIOBUZZ
-    </div>
-  </div>
-</nav>
+</header>
 
   <main>
 
@@ -86,14 +66,14 @@
       <div class="hero-cutoff-line"></div>
     </div>
 
-    
+
 
   </div>
 
 
   <div class="overview-hero" style="grid-template-columns: 1fr; border-right: none; border-bottom: none; background: transparent; position: relative; z-index: 2; align-items: start; min-height: 0; margin-top: -100px;">
-    
-    
+
+
     <div class="hero-text" style="border-right: none; padding: 0px 340px 40px 340px; background: transparent; display: flex; flex-direction: row; align-items: flex-end; justify-content: flex-start; gap: 60px; flex-wrap: wrap;">
 
       <!-- left: paragraph + stats -->
