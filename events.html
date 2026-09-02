@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events — Team IRONIC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="events.html">
+
+
+<!-- HAMBURGER BUTTON -->
+<button class="hamburger-btn" id="hamburgerBtn" onclick="toggleNav()" aria-label="Toggle navigation">
+  <span class="bar"></span>
+  <span class="bar"></span>
+  <span class="bar"></span>
+</button>
+
+<!-- NAV OVERLAY -->
+<div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
+
+
+<!-- SIDEBAR -->
+<nav id="sideNav">
+  <div class="nav-brand">
+    <div class="nav-number">FTC #14226</div>
+    <div class="nav-logo"><span>IRON</span>IC</div>
+    <div class="nav-sub">First Tech Challenge</div>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="index.html">
+      <span class="nav-icon">◈</span> Overview
+    </a>
+    <a class="nav-link" href="team.html">
+      <span class="nav-icon">◉</span> Team
+    </a>
+    <a class="nav-link" href="events.html">
+      <span class="nav-icon">▤</span> Events
+    </a>
+    <a class="nav-link" href="sponsor.html">
+      <span class="nav-icon">◆</span> Sponsors
+    </a>
+  </div>
+  <div class="nav-footer">
+    <div class="nav-footer-text">
+      Season 2026–27<br>
+      BIOBUZZ
+    </div>
+  </div>
+</nav>
+
+  <main>
+
+<div class="page active" id="page-events">
+  <div class="page-header" style="position: relative; text-align: center; overflow: visible;">
+    <h1 class="page-title" style="white-space: nowrap; position: relative; z-index: 3;">Season Schedule</h1>
+    <div class="page-bg-text">2026</div>
+
+    <!-- top-right gear -->
+    <div style="position: absolute; top: 0; right: 0; width: 600px; height: 600px; overflow: hidden; pointer-events: none; z-index: 1;">
+      <img src="gear.png" alt="" style="position: absolute; top: -600px; right: -600px; width: 1200px; height: 1200px; opacity: 0.35; animation: spin-cw 20s linear infinite;">
+    </div>
+
+    <!-- top-left gear -->
+    <div style="position: absolute; top: 0; left: 0; width: 600px; height: 600px; overflow: hidden; pointer-events: none; z-index: 1;">
+      <img src="gear.png" alt="" style="position: absolute; top: -600px; left: -600px; width: 1200px; height: 1200px; opacity: 0.35; animation: spin-ccw 20s linear infinite;">
+    </div>
+  </div>
+
+  <div class="events-content">
+
+    <p class="lead events-intro">
+      Here's where to find Team IRONIC this season. Dates below come straight from our league — we'll
+      update this page the moment venues and any remaining dates are confirmed, so check back before you head out.
+    </p>
+
+    <div class="events-note">
+      <strong>Heads up:</strong> A couple of dates and most locations are still being finalized by our league.
+      Anything marked <strong>TBD</strong> will be updated here as soon as we hear.
+    </div>
+
+    <div class="events-section-title">2026–27 Competition Schedule</div>
+
+    <div class="event-timeline">
+
+      <!-- Kick Off -->
+      <div class="event-card">
+        <div class="event-date-block">
+          <div class="event-month">Sep</div>
+          <div class="event-day">12</div>
+          <div class="event-year">2026</div>
+        </div>
+        <div class="event-body">
+          <div class="event-name-row">
+            <span class="event-name">Kick Off Event</span>
+            <span class="event-type-tag kickoff">Kickoff</span>
+          </div>
+          <div class="event-location">📍 Charlotte HS</div>
+        </div>
+        <div class="event-badges">
+          <span class="event-badge confirmed">Location Set</span>
+        </div>
+      </div>
+
+      <!-- Scrimmage -->
+      <div class="event-card">
+        <div class="event-date-block">
+          <div class="event-month">Oct</div>
+          <div class="event-day multi">17/24</div>
+          <div class="event-year">2026</div>
+        </div>
+        <div class="event-body">
+          <div class="event-name-row">
+            <span class="event-name">Scrimmage</span>
+            <span class="event-type-tag scrimmage">Scrimmage</span>
+          </div>
+          <div class="event-location tbd">📍 Location TBD</div>
+        </div>
+        <div class="event-badges">
+          <span class="event-badge tbd">Date TBD</span>
+          <span class="event-badge tbd">Location TBD</span>
+        </div>
+      </div>
+
+      <!-- Meet 1 -->
+      <div class="event-card">
+        <div class="event-date-block">
+          <div class="event-month">Nov</div>
+          <div class="event-day">14</div>
+          <div class="event-year">2026</div>
+        </div>
+        <div class="event-body">
+          <div class="event-name-row">
+            <span class="event-name">Meet 1</span>
+            <span class="event-type-tag meet">League Meet</span>
+          </div>
+          <div class="event-location tbd">📍 Location TBD</div>
+        </div>
+        <div class="event-badges">
+          <span class="event-badge tbd">Location TBD</span>
+        </div>
+      </div>
+
+      <!-- Meet 2 -->
+      <div class="event-card">
+        <div class="event-date-block">
+          <div class="event-month">Dec</div>
+          <div class="event-day">5</div>
+          <div class="event-year">2026</div>
+        </div>
+        <div class="event-body">
+          <div class="event-name-row">
+            <span class="event-name">Meet 2</span>
+            <span class="event-type-tag meet">League Meet</span>
+          </div>
+          <div class="event-location tbd">📍 Location TBD</div>
+        </div>
+        <div class="event-badges">
+          <span class="event-badge tbd">Location TBD</span>
+        </div>
+      </div>
+
+      <!-- Meet 3 -->
+      <div class="event-card">
+        <div class="event-date-block">
+          <div class="event-month">Jan</div>
+          <div class="event-day multi">9/16</div>
+          <div class="event-year">2027</div>
+        </div>
+        <div class="event-body">
+          <div class="event-name-row">
+            <span class="event-name">Meet 3</span>
+            <span class="event-type-tag meet">League Meet</span>
+          </div>
+          <div class="event-location tbd">📍 Location TBD</div>
+        </div>
+        <div class="event-badges">
+          <span class="event-badge tbd">Date TBD</span>
+          <span class="event-badge tbd">Location TBD</span>
+        </div>
+      </div>
+
+      <!-- Judging -->
+      <div class="event-card">
+        <div class="event-date-block">
+          <div class="event-month">Jan</div>
+          <div class="event-day">30</div>
+          <div class="event-year">2027</div>
+        </div>
+        <div class="event-body">
+          <div class="event-name-row">
+            <span class="event-name">League Judging Interviews</span>
+            <span class="event-type-tag judging">Judging</span>
+          </div>
+          <div class="event-location">💻 Via Zoom</div>
+        </div>
+        <div class="event-badges">
+          <span class="event-badge virtual">Virtual</span>
+        </div>
+      </div>
+
+      <!-- Championship -->
+      <div class="event-card featured">
+        <div class="event-date-block">
+          <div class="event-month">Feb</div>
+          <div class="event-day">13</div>
+          <div class="event-year">2027</div>
+        </div>
+        <div class="event-body">
+          <div class="event-name-row">
+            <span class="event-name">League Championship</span>
+            <span class="event-type-tag championship">Championship</span>
+          </div>
+          <div class="event-location tbd">📍 Location TBD</div>
+        </div>
+        <div class="event-badges">
+          <span class="event-badge tbd">Location TBD</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</main>
+
+<!-- RGB light strip, cycles through site colors at the very bottom of the page -->
+<div class="rgb-strip"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
