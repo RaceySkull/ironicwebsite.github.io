@@ -11,6 +11,8 @@
   const NEXT_COMP_DATE = "2026-09-12T08:00:00"; // Kick Off Event — Charlotte HS
 
   function updateCountdown() {
+    const daysEl = document.getElementById('cd-days');
+    if (!daysEl) return; // this page has no countdown card, nothing to update
     if (!NEXT_COMP_DATE) return; // leave dashes showing
     const target = new Date(NEXT_COMP_DATE).getTime();
     const now = Date.now();
