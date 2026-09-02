@@ -3,37 +3,36 @@
 // Handles the hamburger sidebar toggle, marks
 // the correct nav link as active based on which
 // HTML file is currently open, and runs the
-// "days to next event" counter on the home page.
+// countdown card on the home page (if a date is set).
 // ============================================
 
-// ---- countdown to next event (home page only, safe to include everywhere) ----
-// Update these two lines whenever the next event on the schedule changes.
-  const NEXT_EVENT_DATE = "2026-09-12T08:00:00"; // Kick Off Event — Charlotte HS
-  const NEXT_EVENT_NAME = "Kick Off Event";
+// ---- countdown to next competition (home page only, safe to include everywhere) ----
+// Set your competition date here once it's known, e.g. "2026-01-17T08:00:00"
+  const NEXT_COMP_DATE = "2026-09-12T08:00:00"; // Kick Off Event — Charlotte HS
 
   function updateCountdown() {
-    const daysEl = document.getElementById('cd-days-num');
-    if (!daysEl) return; // not on the home page
-
-    const nameEl = document.getElementById('cd-event-name');
-    const dateEl = document.getElementById('cd-date-label');
-
-    if (!NEXT_EVENT_DATE) return; // leave "TBD" showing
-
-    const target = new Date(NEXT_EVENT_DATE).getTime();
+    if (!NEXT_COMP_DATE) return; // leave dashes showing
+    const target = new Date(NEXT_COMP_DATE).getTime();
     const now = Date.now();
     const diff = target - now;
-    const days = Math.max(0, Math.ceil(diff / (1000 * 60 * 60 * 24)));
-
-    daysEl.textContent = days;
-    if (nameEl) nameEl.textContent = NEXT_EVENT_NAME;
-    if (dateEl) {
-      const d = new Date(NEXT_EVENT_DATE);
-      dateEl.textContent = (d.getMonth() + 1) + '/' + d.getDate() + '/' + String(d.getFullYear()).slice(-2);
+    if (diff <= 0) {
+      document.getElementById('cd-days').textContent = '00';
+      document.getElementById('cd-hours').textContent = '00';
+      document.getElementById('cd-mins').textContent = '00';
+      document.getElementById('cd-secs').textContent = '00';
+      return;
     }
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const mins = Math.floor((diff / (1000 * 60)) % 60);
+    const secs = Math.floor((diff / 1000) % 60);
+    document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+    document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
   }
   updateCountdown();
-  setInterval(updateCountdown, 1000 * 60 * 60); // a once-an-hour refresh is plenty for a day counter
+  setInterval(updateCountdown, 1000);
 
 // ---- sidebar / hamburger toggle ----
 const nav = document.getElementById('sideNav');
@@ -57,7 +56,7 @@ const nav = document.getElementById('sideNav');
     btn.classList.remove('open');
   }
 
-
+  
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') closeNav();
   });
