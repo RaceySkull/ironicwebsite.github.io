@@ -1,8 +1,7 @@
 // ============================================
 // TEAM IRONIC WEBSITE SCRIPT
-// Handles the hamburger sidebar toggle, marks
-// the correct nav link as active based on which
-// HTML file is currently open, and runs the
+// Marks the correct nav link as active based on
+// which HTML file is currently open, and runs the
 // countdown card on the home page (if a date is set).
 // ============================================
 
@@ -35,33 +34,6 @@
   }
   updateCountdown();
   setInterval(updateCountdown, 1000);
-
-// ---- sidebar / hamburger toggle ----
-const nav = document.getElementById('sideNav');
-  const overlay = document.getElementById('navOverlay');
-  const btn = document.getElementById('hamburgerBtn');
-
-  function toggleNav() {
-    const isOpen = nav.classList.contains('open');
-    isOpen ? closeNav() : openNav();
-  }
-
-  function openNav() {
-    nav.classList.add('open');
-    overlay.classList.add('visible');
-    btn.classList.add('open');
-  }
-
-  function closeNav() {
-    nav.classList.remove('open');
-    overlay.classList.remove('visible');
-    btn.classList.remove('open');
-  }
-
-  
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeNav();
-  });
 
 // ---- mark the current page's nav link as active ----
 // Each HTML file's <body> passes its own filename via a data attribute
