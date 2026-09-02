@@ -247,7 +247,7 @@
   }
   .events-section-title::after { content: ""; flex: 1; height: 1px; background: var(--border); }
 
-  .events-content { padding: 48px 56px 72px; max-width: 980px; }
+  .events-content { padding: 48px 56px 72px; max-width: 980px; margin: 0 auto; }
   .events-intro { margin-bottom: 40px; }
 
   .events-note {
