@@ -562,17 +562,21 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
 
 
 /* 17. History - past seasons page
-   Three-column pattern per Chase's whiteboard sketch, now full-bleed
-   on both edges:
+   Three-column pattern per Chase's whiteboard sketch:
      - left:   .history-locator, a slightly lighter bar flush against
                the very left edge of the screen, full page height,
                holding the sticky season tabs
      - center: .season-main, one big photo + write-up per season,
-               with .season-awards stacked underneath it, capped to a
-               comfortable reading width
-     - right:  .season-gallery, one tall "photo log" composite that
-               runs from where it starts all the way to the true
-               right edge of the screen (no page padding stopping it)
+               with .season-awards stacked underneath it. Capped to a
+               comfortable reading width and CENTERED in the space
+               between the locator bar and the gallery (flex-grow
+               plus auto side-margins — not pinned to the left edge
+               of that space).
+     - right:  .season-gallery, one tall "photo log" composite,
+               width set by --gallery-w (on .history-seasons below —
+               change it there, not per-block), flush against the
+               true right edge of the screen (no page padding
+               stopping it)
 
    No new type sizes here — every text element below reuses one of
    the existing "type-" classes (or the plain body font) from section
@@ -634,6 +638,10 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
 .locator-link.active .locator-game { color: var(--teal); opacity: 0.75; }
 
 .history-seasons {
+  /* --gallery-w is shared with .season-gallery and .season-block.stub
+     below so the gallery's width and the stub's reserved space for
+     it never drift out of sync — change it in one place. */
+  --gallery-w: 460px;
   flex: 1;
   min-width: 0;
   padding: 48px 0 96px 48px; /* no right padding — lets .season-gallery run flush to the screen edge */
@@ -652,13 +660,13 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
 .season-block:last-child { border-bottom: none; padding-bottom: 0; }
 
 .season-main {
-  /* the right gutter lives here (not on .season-block) so it never
-     touches .season-gallery, which needs to reach the true screen
-     edge with nothing padding it in */
-  flex: 1 1 640px;
-  max-width: 720px;
+  /* flex-grow + the auto side margins center this column in
+     whatever room is left between the locator bar and the gallery,
+     instead of sitting flush against the locator */
+  flex: 1 1 auto;
+  max-width: 680px;
   min-width: 0;
-  padding-right: 48px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
 }
@@ -725,13 +733,13 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
 .season-awards.tbd { color: var(--text-muted); font-style: italic; }
 
 .season-gallery {
-  /* One tall, narrow "photo log" per season rather than a grid of
-     small shots — Chase builds this as a single composite image
-     sized to the write-up once the text is final. Fixed (skinny)
-     width, pushed flush against the screen's right edge by the
-     auto margin rather than stretching to fill the row. */
-  flex: 0 0 260px;
-  margin-left: auto;
+  /* One tall "photo log" per season rather than a grid of small
+     shots — Chase builds this as a single composite image sized to
+     the write-up once the text is final. Fixed width (--gallery-w,
+     set on .history-seasons above), flush against the screen's
+     right edge since nothing pads .history-content/.history-seasons
+     on that side. */
+  flex: 0 0 var(--gallery-w);
   display: flex;
 }
 .gallery-photolog {
@@ -751,6 +759,11 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
   color: var(--text-muted);
 }
 
+/* The founding-year block has no gallery, but it still reserves
+   that same width on its right so its centered text lines up with
+   every other season's centered text above/below it. */
+.season-block.stub { padding-right: var(--gallery-w); }
+
 @media (max-width: 980px) {
   .history-content { flex-direction: column; }
   .history-locator {
@@ -766,7 +779,8 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
   }
   .history-seasons { padding: 32px 24px 64px 24px; }
   .season-block { flex-direction: column; }
-  .season-main { max-width: none; padding-right: 0; }
-  .season-gallery { flex-basis: auto; min-height: 220px; margin-top: 20px; margin-left: 0; }
+  .season-block.stub { padding-right: 0; }
+  .season-main { max-width: none; margin: 0; }
+  .season-gallery { flex-basis: auto; min-height: 220px; margin-top: 20px; }
   .gallery-photolog { border-radius: 12px; border-right: 1px dashed var(--border); }
 }
