@@ -1,45 +1,28 @@
-/* ================================================================
-   TEAM IRONIC WEBSITE — STYLESHEET
-   ================================================================
-   This file is organized top-to-bottom in the order things appear
-   on the pages. Jump to a section by searching for its banner
-   comment, e.g. search "TOP BAR / NAVIGATION".
+/* TABLE OF CONTENTS
+   Full explanations for each numbered section live in
+   style-guide.pdf. This file just keeps the section markers so you
+   can jump around fast.
 
-   TABLE OF CONTENTS
-   1.  Color variables (:root)               — change the whole site's palette
-   2.  Global reset & base
-   3.  Noise overlay effect
-   4.  Top bar / navigation                  — used on every page
-   5.  Page layout (main, .page)
-   6.  Page header banner                    — Team & Events page titles
-   7.  Home page — overview hero (text/stats)
-   8.  Home page — hero banner (gears + team name)
-   9.  Gear spin decorative animation
-   10. Countdown card                        — home page only
-   11. Events / schedule page
-   12. Team page — member cards + role tags
-   13. Scrollbar styling
-   14. Glow / RGB decorative effects
-   15. Planned / not-yet-built sections
-   16. Responsive / mobile styles             — intentionally empty, see note
-
-   HOW TO IMPLEMENT COMMON CHANGES
-   - Change site colors:          edit the variables in section 1 (:root)
-   - Add/remove a nav link:       edit <nav class="topbar-links"> in each .html file
-   - Add a team member:           copy a .team-card block in team.html (section 12)
-   - Add an event:                copy an .event-card block in events.html (section 11)
-   - Change the countdown date:   edit NEXT_COMP_DATE in script.js
-   - Add mobile/responsive rules: use section 16 at the bottom of this file
-   ================================================================ */
+   1.  Color variables
+   2.  Baseline setup
+   3.  Background texture
+   4.  Navigation bar
+   5.  Page intersection with nav prevention
+   6.  Page headlines
+   7.  Index - General overview
+   8.  Index - decoration
+   9.  Gear spinning animation
+   10. Event countdown card
+   11. Events overall page
+   12. Team overall page
+   13. Scroll bar
+   14. RGB strip
+   15. Typography system
+   16. Utility text colors
+*/
 
 
-/* ================================================================
-   1. COLOR VARIABLES
-   ================================================================
-   Every color used on the site is defined once here. Change a
-   value below and it updates everywhere that variable is used —
-   you should not need to hunt through the file for hex codes.
-   ================================================================ */
+/* 1. Color variables */
 :root {
   --teal: #00D4C8;
   --teal-dim: #00A89E;
@@ -59,9 +42,7 @@
 }
 
 
-/* ================================================================
-   2. GLOBAL RESET & BASE
-   ================================================================ */
+/* 2. Baseline setup */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
@@ -76,13 +57,7 @@ body {
 }
 
 
-/* ================================================================
-   3. NOISE OVERLAY EFFECT
-   ================================================================
-   A subtle full-screen grain texture sitting on top of everything.
-   Purely decorative — safe to delete this whole block if you ever
-   want a flat background instead.
-   ================================================================ */
+/* 3. Background texture */
 body::before {
   content: "";
   position: fixed;
@@ -94,14 +69,7 @@ body::before {
 }
 
 
-/* ================================================================
-   4. TOP BAR / NAVIGATION
-   ================================================================
-   The fixed header used on every page (index.html, team.html,
-   events.html). Markup lives in each page's <header class="topbar">.
-   The currently-active link gets its ".active" class added
-   automatically by script.js based on the page's data-page attribute.
-   ================================================================ */
+/* 4. Navigation bar */
 .topbar {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -133,7 +101,6 @@ body::before {
 }
 
 .topbar-number {
-  font-family: "Space Mono", monospace;
   font-size: 9px;
   color: var(--pink);
   letter-spacing: 0.15em;
@@ -153,9 +120,6 @@ body::before {
   cursor: pointer;
   transition: all 0.2s;
   border-bottom: 2px solid transparent;
-  font-family: "Space Mono", monospace;
-  font-size: 11px;
-  letter-spacing: 0.1em;
   color: var(--text-dim);
   text-transform: uppercase;
   text-decoration: none;
@@ -169,14 +133,10 @@ body::before {
   border-bottom-color: var(--teal);
 }
 
-/* pink accent on every other nav item hover */
 .nav-link:nth-child(even):hover { color: var(--pink); border-bottom-color: var(--pink); }
 
 .topbar-meta {
-  font-family: "Space Mono", monospace;
-  font-size: 9px;
   color: var(--text-muted);
-  letter-spacing: 0.1em;
   text-align: right;
   line-height: 1.6;
   flex-shrink: 0;
@@ -184,13 +144,7 @@ body::before {
 }
 
 
-/* ================================================================
-   5. PAGE LAYOUT
-   ================================================================
-   <main> holds the current page's content below the fixed top bar.
-   Each top-level page wrapper uses .page / .page.active for a
-   simple fade-in on load.
-   ================================================================ */
+/* 5. Page intersection with nav prevention */
 main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
 
 .page { display: none; animation: fadeIn 0.3s ease; }
@@ -198,25 +152,14 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
 @keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
 
 
-/* ================================================================
-   6. PAGE HEADER BANNER
-   ================================================================
-   The big title banner at the top of team.html and events.html
-   (e.g. "Our Team", "Season Schedule"), including the giant faint
-   background year text and the spinning corner gears.
-   ================================================================ */
+/* 6. Page headlines */
 .page-header {
   padding: 64px 56px 40px;
   position: relative; overflow: hidden;
   border-bottom: 1px solid var(--border);
 }
 
-.page-title {
-  font-family: "Inter", sans-serif;
-  font-size: clamp(42px, 6vw, 80px);
-  font-weight: 900;
-  line-height: 0.95; color: var(--text); letter-spacing: -0.04em;
-}
+.page-title { color: var(--text); }
 .page-title .accent { color: var(--teal); }
 .page-bg-text {
   position: absolute; right: 40px; bottom: -10px;
@@ -226,14 +169,7 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
 }
 
 
-/* ================================================================
-   7. HOME PAGE — OVERVIEW HERO (text, stats bar, CTA)
-   ================================================================
-   The "who we are" block on index.html: the lead paragraph, the
-   Seasons/Events/Rookie Year/Team Number stat pills, and the
-   "Meet the Team" button. Sits directly under the hero banner
-   (section 8) at the top of the home page.
-   ================================================================ */
+/* 7. Index - General overview */
 .overview-hero {
   display: grid; grid-template-columns: 1fr 420px;
   gap: 0; align-items: stretch; min-height: 380px;
@@ -244,10 +180,6 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
   border-right: 1px solid var(--border);
   display: flex; flex-direction: column; justify-content: space-between;
 }
-.hero-text .lead {
-  font-size: 22px; line-height: 1.8; color: var(--text-dim);
-  margin-bottom: 0; font-weight: 400; max-width: 680px;
-}
 
 .stat-label {
   font-size: 12px; font-weight: 500; color: var(--text-muted);
@@ -255,14 +187,7 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
 }
 
 
-/* ================================================================
-   8. HOME PAGE — HERO BANNER (team name + gears)
-   ================================================================
-   The full-width banner at the very top of index.html: team number,
-   "IRONIC" wordmark, EST/school meta block, the two decorative
-   spinning gears bleeding off the bottom corners, and the glowing
-   cutoff line beneath it.
-   ================================================================ */
+/* 8. Index - decoration */
 .hero-banner-wrap {
   position: relative;
   width: 100%;
@@ -286,25 +211,14 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
 }
 
 .hero-teamnum {
-  font-family: "Inter", sans-serif;
-  font-size: 18px;
-  font-weight: 700;
   color: var(--text-muted);
-  letter-spacing: 0.05em;
   text-decoration: underline;
   text-decoration-color: var(--border);
   text-underline-offset: 6px;
   margin-bottom: 8px;
 }
 
-.hero-teamname {
-  font-family: "Inter", sans-serif;
-  font-size: clamp(80px, 11vw, 160px);
-  font-weight: 900;
-  color: var(--teal);
-  letter-spacing: -0.04em;
-  line-height: 0.9;
-}
+.hero-teamname { color: var(--teal); }
 
 .hero-meta-block {
   position: fixed;
@@ -313,13 +227,7 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
   text-align: right;
   z-index: 50;
 }
-.hero-meta-line {
-  font-family: "Space Mono", monospace;
-  font-size: 11px;
-  color: var(--text-dim);
-  letter-spacing: 0.08em;
-  line-height: 1.6;
-}
+.hero-meta-line { color: var(--text-dim); line-height: 1.6; }
 .hero-meta-line:first-child { color: var(--pink); font-weight: 700; }
 
 .hero-stats {
@@ -340,18 +248,10 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
   flex-direction: column;
   gap: 3px;
 }
-.hero-stat-num {
-  font-family: "Inter", sans-serif;
-  font-size: 20px; font-weight: 800;
-  color: var(--pink); letter-spacing: -0.02em; line-height: 1;
-}
-.hero-stat-label {
-  font-size: 10px; font-weight: 500;
-  color: var(--pink); opacity: 0.7; text-transform: uppercase; letter-spacing: 0.05em;
-}
+.hero-stat-num { color: var(--pink); }
+.hero-stat-label { color: var(--pink); opacity: 0.7; }
 .hero-stat-div { width: 1px; background: var(--border); flex-shrink: 0; }
 
-/* gears bleeding off bottom corners — same size, exactly half cropped by page edge */
 .hero-gear-desktop-left {
   position: absolute;
   bottom: -460px; left: -300px;
@@ -378,26 +278,14 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
 }
 
 
-/* ================================================================
-   9. GEAR SPIN DECORATIVE ANIMATION
-   ================================================================
-   Shared by every spinning gear image on the site (hero banner gears
-   on index.html, corner gears on team.html/events.html page headers).
-   Apply .gear-spin or .gear-spin-reverse to any <img src="gear.png">.
-   ================================================================ */
+/* 9. Gear spinning animation */
 @keyframes spin-cw  { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 @keyframes spin-ccw { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
 .gear-spin         { animation: spin-cw  20s linear infinite; display: block; width: 100%; }
 .gear-spin-reverse { animation: spin-ccw 20s linear infinite; display: block; width: 100%; }
 
 
-/* ================================================================
-   10. COUNTDOWN CARD
-   ================================================================
-   Home page only. Shows the live countdown to NEXT_COMP_DATE
-   (set in script.js). Digits are updated every second by
-   updateCountdown() in script.js.
-   ================================================================ */
+/* 10. Event countdown card */
 .countdown-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -405,7 +293,6 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
   padding: 40px 40px 36px;
 }
 .countdown-label {
-  font-family: "Space Mono", monospace;
   font-size: 13px;
   color: var(--teal);
   letter-spacing: 0.2em;
@@ -445,7 +332,6 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
   font-variant-numeric: tabular-nums;
 }
 .countdown-sublabel {
-  font-family: "Space Mono", monospace;
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -460,7 +346,6 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
   padding-top: 8px;
 }
 .countdown-event {
-  font-family: "Space Mono", monospace;
   font-size: 12px;
   font-weight: 700;
   color: var(--teal);
@@ -470,19 +355,9 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
 }
 
 
-/* ================================================================
-   11. EVENTS / SCHEDULE PAGE (events.html)
-   ================================================================
-   HOW TO ADD AN EVENT: copy one .event-card block in events.html's
-   .event-timeline and edit the month/day/year, name, location, and
-   .event-type-tag class (kickoff / scrimmage / meet / judging /
-   championship — each has its own color below). Add class
-   "featured" to .event-card to give it the glowing teal highlight
-   (used for the championship).
-   ================================================================ */
+/* 11. Events overall page */
 .events-section-title {
-  font-family: "Inter", sans-serif; font-size: 10px; font-weight: 700;
-  letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted);
+  color: var(--text-muted);
   margin-bottom: 24px; display: flex; align-items: center; gap: 16px;
 }
 .events-section-title::after { content: ""; flex: 1; height: 1px; background: var(--border); }
@@ -534,19 +409,13 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
   padding-right: 22px;
 }
 .event-month {
-  font-family: "Space Mono", monospace;
   font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
   text-transform: uppercase; color: var(--pink);
   margin-bottom: 4px;
 }
-.event-day {
-  font-family: "Inter", sans-serif;
-  font-size: 30px; font-weight: 900; color: var(--text);
-  line-height: 1.05; letter-spacing: -0.02em;
-}
+.event-day { color: var(--text); }
 .event-day.multi { font-size: 19px; }
 .event-year {
-  font-family: "Space Mono", monospace;
   font-size: 10px; color: var(--text-muted); margin-top: 3px;
 }
 
@@ -558,49 +427,14 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
 .event-name {
   font-size: 18px; font-weight: 700; color: var(--text); letter-spacing: -0.01em;
 }
-.event-type-tag {
-  display: inline-block;
-  font-family: "Space Mono", monospace;
-  font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
-  text-transform: uppercase; padding: 3px 9px; border-radius: 20px;
-  flex-shrink: 0;
-}
-.event-type-tag.kickoff      { background: var(--teal-glow); color: var(--teal); border: 1px solid var(--teal-border); }
-.event-type-tag.scrimmage    { background: rgba(255,255,255,0.06); color: var(--text-dim); border: 1px solid var(--border); }
-.event-type-tag.meet         { background: rgba(255,45,120,0.12); color: var(--pink); border: 1px solid rgba(255,45,120,0.3); }
-.event-type-tag.judging      { background: rgba(255,215,0,0.1); color: #FFD966; border: 1px solid rgba(255,215,0,0.3); }
-.event-type-tag.championship { background: var(--teal-glow); color: var(--teal); border: 1px solid var(--teal-border); }
 
 .event-location {
-  font-family: "Space Mono", monospace;
   font-size: 12px; color: var(--text-dim); letter-spacing: 0.03em;
 }
 .event-location.tbd { color: var(--text-muted); font-style: italic; }
 
-.event-badges {
-  flex-shrink: 0;
-  display: flex; flex-direction: column; align-items: flex-end; gap: 6px;
-}
-.event-badge {
-  font-family: "Space Mono", monospace;
-  font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 4px 10px; border-radius: 20px; white-space: nowrap;
-}
-.event-badge.confirmed { background: var(--teal-glow); color: var(--teal); border: 1px solid var(--teal-border); }
-.event-badge.tbd       { background: rgba(255,45,120,0.1); color: var(--pink); border: 1px solid rgba(255,45,120,0.25); }
-.event-badge.virtual   { background: rgba(255,255,255,0.06); color: var(--text-dim); border: 1px solid var(--border); }
 
-
-/* ================================================================
-   12. TEAM PAGE (team.html)
-   ================================================================
-   HOW TO ADD A MEMBER: copy one .team-card block inside the
-   relevant .team-grid in team.html (Leadership / Build / Code /
-   Media / Mentors), swap the photo, name, role, and grade, and
-   alternate the "pink"/"blue" modifier class for the accent color.
-   .role-tag pill classes below (build/code/media/mentor/lead) are
-   used only on team.html.
-   ================================================================ */
+/* 12. Team overall page */
 .team-content { padding: 48px 56px 72px; }
 .team-grid {
   display: flex !important;
@@ -634,32 +468,12 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
 .team-card.pink .team-card-img::before { background: var(--pink); }
 .team-card.blue .team-card-img::before { background: var(--teal); }
 .team-card-body { padding: 0; text-align: center; }
-.team-card-name { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px; letter-spacing: -0.01em; }
+.team-card-name { color: var(--text); margin-bottom: 4px; }
 .team-card-role { font-size: 11px; font-weight: 500; color: var(--teal); text-transform: uppercase; letter-spacing: 0.06em; }
 .team-card.pink .team-card-role { color: var(--pink); }
 .team-card.blue .team-card-role { color: var(--teal); }
 .team-card-grade { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
 
-/* role pill under each team member's name/grade */
-.role-tag {
-  display: inline-block;
-  font-family: 'Space Mono', monospace;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 3px 9px;
-  border-radius: 20px;
-  margin-top: 6px;
-}
-.role-tag.build   { background: var(--teal-glow); color: var(--teal); border: 1px solid var(--teal-border); }
-.role-tag.code    { background: rgba(255,45,120,0.12); color: var(--pink); border: 1px solid rgba(255,45,120,0.3); }
-.role-tag.media   { background: rgba(255,255,255,0.06); color: var(--text-dim); border: 1px solid var(--border); }
-.role-tag.mentor  { background: rgba(255,215,0,0.1); color: #FFD966; border: 1px solid rgba(255,215,0,0.3); }
-.role-tag.lead    { background: var(--teal-glow); color: var(--teal); border: 1px solid var(--teal-border); }
-
-/* centers the section divider titles (Leadership / Build / Code / etc.)
-   with a line on both sides — used only on team.html */
 .team-content .events-section-title {
   justify-content: center;
 }
@@ -671,9 +485,7 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
 }
 
 
-/* ================================================================
-   13. SCROLLBAR STYLING
-   ================================================================ */
+/* 13. Scroll bar */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb {
@@ -682,26 +494,7 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
 }
 
 
-/* ================================================================
-   14. GLOW / RGB DECORATIVE EFFECTS
-   ================================================================ */
-.glow-dot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--teal);
-  box-shadow: 0 0 8px var(--teal);
-  margin-right: 8px;
-  animation: pulse 2s infinite;
-}
-@keyframes pulse {
-  0%,100% { opacity: 1; }
-  50% { opacity: 0.4; }
-}
-
-/* thin light strip that cycles through the site colors, fixed to the
-   very bottom of every page (markup: <div class="rgb-strip"> in each .html file) */
+/* 14. RGB strip */
 .rgb-strip {
   display: block;
   position: fixed;
@@ -720,33 +513,73 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
 }
 
 
-/* ================================================================
-   15. PLANNED / NOT-YET-BUILT SECTIONS
-   ================================================================
-   These pages/sections were sketched out at some point but don't
-   exist in the site yet (no nav link, no .html file). Kept here as
-   a reminder of what's planned. Add real rules under a banner like
-   the ones above when you actually build each one:
-     - Alumni     (former team members, quotes)
-     - Awards     (featured awards, e.g. Connect Award / Control Award)
-     - Sponsors   (sponsor logos / thank-yous)
-     - Contact    (contact form / info)
-   ================================================================ */
+/* 15. Typography system */
+.type-hero-headline {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(80px, 11vw, 160px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+}
+
+.type-headline {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(42px, 6vw, 80px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+.type-subhead {
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.type-body {
+  font-family: "Inter", sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.8;
+  max-width: 680px;
+}
+
+.type-caption-heading {
+  font-family: "Inter", sans-serif;
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.type-caption {
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.type-button {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.type-names {
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.mono { font-family: "Space Mono", monospace; }
 
 
-/* ================================================================
-   16. RESPONSIVE / MOBILE STYLES
-   ================================================================
-   Intentionally empty. All previous mobile/tablet media queries
-   were removed on purpose — the mobile experience is being rebuilt
-   from scratch. Add new breakpoints here when that work starts.
-
-   HOW TO ADD A BREAKPOINT:
-     @media (max-width: 700px) {
-       .some-class { ... }
-     }
-
-   Previously-used breakpoints, for reference only (not restored):
-   1100px (tablet), 900px/1000px (countdown card), 700px and 480px
-   (top bar / countdown digits on small phones).
-   ================================================================ */
+/* 16. Utility text colors */
+.text-teal { color: var(--teal); }
+.text-pink { color: var(--pink); }
+.text-dim  { color: var(--text-dim); }
+.tag-line  { margin-top: 6px; }

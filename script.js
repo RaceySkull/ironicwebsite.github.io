@@ -1,23 +1,20 @@
-// ================================================================
-// TEAM IRONIC WEBSITE — SCRIPT
-// ================================================================
-// Two independent jobs, both run on every page:
-//   1. Countdown card       — updates the days:hrs:min:sec digits
-//                              on the home page (harmless no-op on
-//                              pages that don't have a countdown card)
-//   2. Active nav highlight — adds ".active" to the current page's
-//                              link in the top bar
-// ================================================================
+// TEAM IRONIC WEBSITE SCRIPT
+//
+// Does two things, both run on every page:
+//   1. Countdown card: updates the days/hrs/min/sec numbers on the
+//      home page (does nothing on pages without a countdown card)
+//   2. Active nav link: adds the ".active" highlight to whichever
+//      nav link matches the current page
 
 
-// ----------------------------------------------------------------
-// 1. COUNTDOWN TO NEXT COMPETITION
-// ----------------------------------------------------------------
-// HOW TO UPDATE: change NEXT_COMP_DATE below to the next event's
-// date/time (format: "YYYY-MM-DDTHH:MM:SS", 24-hour clock). Also
+// ----------------------------------------------------------
+// 1. Countdown to next competition
+// ----------------------------------------------------------
+// To update, change NEXT_COMP_DATE below to the next event's date
+// and time (format: "YYYY-MM-DDTHH:MM:SS", 24 hour clock). Also
 // update the matching text in the .countdown-event line in
-// index.html so the label and the countdown stay in sync.
-const NEXT_COMP_DATE = "2026-09-12T08:00:00"; // Kick Off Event — Charlotte HS
+// index.html so the label and the countdown match up.
+const NEXT_COMP_DATE = "2026-09-12T08:00:00"; // Kick Off Event, Charlotte HS
 
 function updateCountdown() {
   const daysEl = document.getElementById('cd-days');
@@ -51,13 +48,13 @@ updateCountdown();
 setInterval(updateCountdown, 1000);
 
 
-// ----------------------------------------------------------------
-// 2. ACTIVE NAV LINK
-// ----------------------------------------------------------------
-// Each HTML file's <body> passes its own filename via a data
-// attribute, e.g. <body data-page="team.html">. This just matches
-// that against each nav link's href and marks the winner ".active" —
-// no server or routing needed.
+// ----------------------------------------------------------
+// 2. Active nav link
+// ----------------------------------------------------------
+// Each HTML file's <body> tag passes its own filename through a
+// data attribute, like <body data-page="team.html">. This just
+// checks that against each nav link's href and marks the match
+// ".active", no server or routing needed for it to work.
 document.addEventListener('DOMContentLoaded', () => {
   const current = document.body.getAttribute('data-page');
   if (!current) return;
