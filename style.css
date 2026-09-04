@@ -19,6 +19,7 @@
    14. RGB strip
    15. Typography system
    16. Utility text colors
+   17. History - past seasons page
 */
 
 
@@ -143,6 +144,14 @@ body::before {
   margin-left: auto;
 }
 
+/* Swapped the top nav out of Inter and onto the site's other existing
+   typeface (Space Mono, already used everywhere via ".mono") instead
+   of the heavy uppercase Inter it had from .type-caption-heading.
+   Written as ".topbar .nav-link" (not just ".nav-link") so it beats
+   .type-caption-heading's font-family on specificity — no new font
+   was added, this just points at the other one already loaded. */
+.topbar .nav-link { font-family: "Space Mono", monospace; }
+
 
 /* 5. Page intersection with nav prevention */
 main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
@@ -160,13 +169,6 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
 }
 
 .page-title { color: var(--text); }
-.page-title .accent { color: var(--teal); }
-.page-bg-text {
-  position: absolute; right: 40px; bottom: -10px;
-  font-family: "Inter", sans-serif; font-size: 130px; font-weight: 900;
-  color: rgba(255,255,255,0.025); pointer-events: none; user-select: none;
-  line-height:1; letter-spacing: -0.05em;
-}
 
 
 /* 7. Index - General overview */
@@ -179,11 +181,6 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
   padding: 56px 56px 48px;
   border-right: 1px solid var(--border);
   display: flex; flex-direction: column; justify-content: space-between;
-}
-
-.stat-label {
-  font-size: 12px; font-weight: 500; color: var(--text-muted);
-  letter-spacing: 0; text-transform: none;
 }
 
 
@@ -338,13 +335,6 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
   text-transform: uppercase;
   color: var(--text-muted);
 }
-.countdown-sep {
-  font-family: "Inter", sans-serif;
-  font-size: 28px;
-  font-weight: 900;
-  color: var(--text-muted);
-  padding-top: 8px;
-}
 .countdown-event {
   font-size: 12px;
   font-weight: 700;
@@ -364,19 +354,6 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
 
 .events-content { padding: 48px 56px 72px; max-width: 980px; margin: 0 auto; }
 .events-intro { margin-bottom: 40px; }
-
-.events-note {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--teal);
-  border-radius: 8px;
-  padding: 16px 20px;
-  font-size: 13px;
-  color: var(--text-dim);
-  line-height: 1.6;
-  margin-bottom: 48px;
-}
-.events-note strong { color: var(--teal); }
 
 .event-timeline {
   display: flex;
@@ -582,4 +559,214 @@ main { margin-left: 0; margin-top: 68px; min-height: 100vh; }
 .text-teal { color: var(--teal); }
 .text-pink { color: var(--pink); }
 .text-dim  { color: var(--text-dim); }
-.tag-line  { margin-top: 6px; }
+
+
+/* 17. History - past seasons page
+   Three-column pattern per Chase's whiteboard sketch, now full-bleed
+   on both edges:
+     - left:   .history-locator, a slightly lighter bar flush against
+               the very left edge of the screen, full page height,
+               holding the sticky season tabs
+     - center: .season-main, one big photo + write-up per season,
+               with .season-awards stacked underneath it, capped to a
+               comfortable reading width
+     - right:  .season-gallery, one tall "photo log" composite that
+               runs from where it starts all the way to the true
+               right edge of the screen (no page padding stopping it)
+
+   No new type sizes here — every text element below reuses one of
+   the existing "type-" classes (or the plain body font) from section
+   15, same as the rest of the site.
+
+   Each season lives in one .season-block. Copy a whole block to add
+   a season, and add a matching .locator-link up in the nav column
+   (href="#season-XXXX-XX" has to match the block's id). The
+   scrollspy in script.js highlights whichever locator link is
+   currently on screen, no manual wiring needed beyond that.
+
+   .season-gallery holds ONE tall composite photo per season (Chase
+   builds these himself once each season's write-up text is final,
+   so the image comes out the right height to match). Swap the
+   .gallery-photolog.placeholder div for a real
+   <div class="gallery-photolog"><img src="..."></div> when that
+   photo exists — no other markup changes needed. */
+.history-content {
+  display: flex;
+  align-items: stretch; /* lets the locator bar's background stretch to match the full season list's height */
+  width: 100%;
+}
+
+.history-locator {
+  flex: 0 0 200px;
+  background: var(--surface); /* one step lighter than the page background, same token used elsewhere for panels */
+  border-right: 1px solid var(--border);
+}
+.history-locator-inner {
+  position: sticky;
+  top: 68px; /* sits right under the fixed topbar */
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.history-locator-label {
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  padding: 0 14px;
+}
+.locator-link {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 14px;
+  border-left: 2px solid var(--border);
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.locator-link:hover { color: var(--teal); border-left-color: var(--teal-dim); }
+.locator-link.active {
+  color: var(--teal);
+  border-left-color: var(--teal);
+  background: var(--surface2);
+  border-radius: 0 8px 8px 0;
+}
+.locator-link.active .locator-game { color: var(--teal); opacity: 0.75; }
+
+.history-seasons {
+  flex: 1;
+  min-width: 0;
+  padding: 48px 0 96px 48px; /* no right padding — lets .season-gallery run flush to the screen edge */
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.season-block {
+  scroll-margin-top: 24px;
+  display: flex;
+  align-items: stretch;
+  padding-bottom: 64px;
+  border-bottom: 1px solid var(--border);
+}
+.season-block:last-child { border-bottom: none; padding-bottom: 0; }
+
+.season-main {
+  /* the right gutter lives here (not on .season-block) so it never
+     touches .season-gallery, which needs to reach the true screen
+     edge with nothing padding it in */
+  flex: 1 1 640px;
+  max-width: 720px;
+  min-width: 0;
+  padding-right: 48px;
+  display: flex;
+  flex-direction: column;
+}
+
+.season-photo {
+  aspect-ratio: 16/9;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  position: relative;
+}
+.season-photo img { width: 100%; height: 100%; object-fit: cover; }
+.season-photo.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 20px;
+}
+
+.season-heading-row {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+.season-game { color: var(--teal); }
+.season-years { color: var(--text-muted); }
+
+.season-desc { margin-top: 10px; }
+
+.season-awards {
+  margin-top: 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px 26px;
+}
+.season-awards-title {
+  color: var(--pink);
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.award-list { display: flex; flex-direction: column; gap: 18px; }
+.award-item { display: flex; align-items: flex-start; gap: 16px; }
+.award-image {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+}
+.award-image img { width: 100%; height: 100%; object-fit: cover; }
+.award-body { min-width: 0; }
+.award-name { color: var(--text); display: block; margin-bottom: 4px; }
+.award-desc { color: var(--text-dim); }
+.season-awards.tbd { color: var(--text-muted); font-style: italic; }
+
+.season-gallery {
+  /* One tall, narrow "photo log" per season rather than a grid of
+     small shots — Chase builds this as a single composite image
+     sized to the write-up once the text is final. Fixed (skinny)
+     width, pushed flush against the screen's right edge by the
+     auto margin rather than stretching to fill the row. */
+  flex: 0 0 260px;
+  margin-left: auto;
+  display: flex;
+}
+.gallery-photolog {
+  flex: 1;
+  border-radius: 12px 0 0 12px;
+  border: 1px dashed var(--border);
+  border-right: none;
+  background: var(--surface2);
+  overflow: hidden;
+}
+.gallery-photolog img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.gallery-photolog.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+@media (max-width: 980px) {
+  .history-content { flex-direction: column; }
+  .history-locator {
+    flex: 0 0 auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .history-locator-inner {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 20px;
+  }
+  .history-seasons { padding: 32px 24px 64px 24px; }
+  .season-block { flex-direction: column; }
+  .season-main { max-width: none; padding-right: 0; }
+  .season-gallery { flex-basis: auto; min-height: 220px; margin-top: 20px; margin-left: 0; }
+  .gallery-photolog { border-radius: 12px; border-right: 1px dashed var(--border); }
+}

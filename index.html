@@ -22,7 +22,12 @@
   - Bio paragraph, edit the <p class="lead"> text below.
   - Stat numbers (Seasons, FIRST Events, Rookie Year, Team #), edit
     the .hero-stat-num spans.
-  - Countdown date, set NEXT_COMP_DATE in script.js.
+  - Countdown date, set NEXT_COMP_DATE in script.js. The card now
+    only shows Days (hours/min/sec were dropped from both here and
+    script.js) — so it only needs re-checking once a day, not once
+    a second.
+  - "14226" under the team name uses type-caption-heading now
+    (bumped up from type-subhead) so it reads bigger.
   - Full notes on this file's CSS are in style-guide.pdf, sections
     6 through 10.
   - Text sizing (headline, subhead, body copy, caption heading,
@@ -43,6 +48,7 @@
     <a class="nav-link type-caption-heading" href="index.html">Overview</a>
     <a class="nav-link type-caption-heading" href="team.html">Team</a>
     <a class="nav-link type-caption-heading" href="events.html">Events</a>
+    <a class="nav-link type-caption-heading" href="history.html">History</a>
   </nav>
   <div class="topbar-meta type-caption mono">
     Season 2026–27<br>
@@ -63,7 +69,7 @@
       <!-- title block -->
       <div class="hero-top-row">
         <div class="hero-title-block">
-          <div class="hero-teamnum type-subhead">14226</div>
+          <div class="hero-teamnum type-caption-heading">14226</div>
           <div class="hero-teamname type-hero-headline">IRONIC</div>
         </div>
       </div>
@@ -144,21 +150,6 @@
           <div class="countdown-unit">
             <div class="countdown-num" id="cd-days">--</div>
             <div class="countdown-sublabel mono">Days</div>
-          </div>
-          <div class="countdown-sep">:</div>
-          <div class="countdown-unit">
-            <div class="countdown-num" id="cd-hours">--</div>
-            <div class="countdown-sublabel mono">Hrs</div>
-          </div>
-          <div class="countdown-sep">:</div>
-          <div class="countdown-unit">
-            <div class="countdown-num" id="cd-mins">--</div>
-            <div class="countdown-sublabel mono">Min</div>
-          </div>
-          <div class="countdown-sep">:</div>
-          <div class="countdown-unit">
-            <div class="countdown-num" id="cd-secs">--</div>
-            <div class="countdown-sublabel mono">Sec</div>
           </div>
         </div>
         <div class="countdown-event mono">Kick Off Event · 9/12/26</div>
